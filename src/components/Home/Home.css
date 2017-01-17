@@ -1,0 +1,18 @@
+.Home {
+    margin: 20px;
+}
+
+.boxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nav {
+    text-align: center;
+}
+
+.desc {
+    text-align: center;
+}
+
