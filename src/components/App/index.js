@@ -5,67 +5,49 @@ import Home from '../Home';
 import { Screentwo } from '../Screentwo';
 import { Summary } from '../Summary';
 
-const styles = {
-    headline : {
-        fontSize     : 24,
-        paddingTop   : 16,
-        marginBottom : 12,
-        fontWeight   : 400,
-    },
-};
-
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.onBoxSelected = this.onBoxSelected.bind(this);
-        this.onAddBox      = this.onAddBox.bind(this);
-        this.onRemoveBox   = this.onRemoveBox.bind(this);
-        this.onBtnClick    = this.onBtnClick.bind(this);
-        this.state         = {
-            value       : 'home',
-            boxes       : [
-                {
-                    id    : 0,
-                    color : 'red'
-                },
-                {
-                    id    : 1,
-                    color : 'red'
-                },
-                {
-                    id    : 2,
-                    color : 'red'
-                },
-                {
-                    id    : 3,
-                    color : 'red'
-                },
-                {
-                    id    : 4,
-                    color : 'red'
-                },
-                {
-                    id    : 5,
-                    color : 'green'
-                },
-                {
-                    id    : 6,
-                    color : 'green'
-                }
-            ],
-            selectedBox : null
-        };
-    }
 
-    handleChange = (value) => {
-        this.setState({ value });
+    /* Public fields */
+    state         = {
+        value       : 'home',
+        boxes       : [
+            {
+                id    : 0,
+                color : 'red'
+            },
+            {
+                id    : 1,
+                color : 'red'
+            },
+            {
+                id    : 2,
+                color : 'red'
+            },
+            {
+                id    : 3,
+                color : 'red'
+            },
+            {
+                id    : 4,
+                color : 'red'
+            },
+            {
+                id    : 5,
+                color : 'green'
+            },
+            {
+                id    : 6,
+                color : 'green'
+            }
+        ],
+        selectedBox : null
     };
 
-    onBoxSelected(selectedBox) {
+    onBoxSelected = (selectedBox) => {
         this.setState({ selectedBox });
-    }
+    };
 
-    onAddBox() {
+    onAddBox = () => {
         const newBox = {
             id    : this.state.boxes.length,
             color : 'red'
@@ -77,19 +59,30 @@ class App extends Component {
                               newBox
                           ]
                       });
-    }
+    };
 
-    onRemoveBox() {
+    onRemoveBox = () => {
         if( !this.state.selectedBox ) {
-            this.setState({ boxes: this.removeLastBox(this.state.boxes) });
+            this.setState({ boxes : this.removeLastBox(this.state.boxes) });
         } else {
             this.setState({
                               boxes       : this.removeSelectedBox(this.state.selectedBox, this.state.boxes),
                               selectedBox : null
                           });
         }
-    }
+    };
 
+    onBtnClick = (color, box, boxes) => {
+        if( box ) {
+            this.setState({ boxes : this.updateSelectedBoxColor(color, box, this.state.boxes) });
+        }
+    };
+
+    handleChange = (value) => {
+        this.setState({ value });
+    };
+
+    /* Methods */
     removeLastBox(boxes) {
         if( boxes.length ) {
             // Remove the last box
@@ -105,12 +98,6 @@ class App extends Component {
             return boxes.filter((box) => selectedBox.id !== box.id);
         } else {
             return boxes;
-        }
-    }
-
-    onBtnClick(color, box) {
-        if( box ) {
-            this.setState({ boxes : this.updateSelectedBoxColor(color, box, this.state.boxes) });
         }
     }
 

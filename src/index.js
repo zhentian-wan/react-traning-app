@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory } from 'react-router';
 
 // provider required by material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

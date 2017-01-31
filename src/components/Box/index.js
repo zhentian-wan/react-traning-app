@@ -12,4 +12,11 @@ const Box = ({color, onClick, id, highlight}) => (
   </div>
 );
 
+Box.propTypes = {
+    onClick: React.PropTypes.func.isRequired,
+    color: React.PropTypes.string.isRequired,
+    highlight: React.PropTypes.bool.isRequired,
+    id: React.PropTypes.number
+};
+
 export default Box;

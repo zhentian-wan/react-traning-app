@@ -30,32 +30,27 @@ const ActionBtns = ({onAddBox, onRemoveBox}) => (
 * Stateful Component
 * */
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
 
-        // Whether has Selected Box
-        this.state = {
-            current : null
-        }
-    }
-
-    handleClick(box) {
+    /* Public field*/
+    handleClick = (box) => {
         this.props.onBoxSelected(box);
         // set current selected box
         this.setState({ current : box.id })
-    }
+    };
 
+    state = {
+        current : null
+    };
+
+    /* Method */
     render() {
         const boxes = this.props.boxes.map((box, index) => {
             return (
                 <Box
+                    {...box}
                     onClick={() => this.handleClick(box)}
                     key={index}
-                    highlight={this.state.current === box.id}
-                    color={box.color}
-                    id={box.id}
-                ></Box>
+                    highlight={this.state.current === box.id}/>
             );
         });
         return (

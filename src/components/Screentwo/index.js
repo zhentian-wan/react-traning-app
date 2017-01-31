@@ -38,10 +38,10 @@ export const Screentwo = ( {selectedBox, onBtnClick } ) => {
                 onBtnClick={onBtnClick}
                 selectedBox={selectedBox}/>
             <hr/>
-            <Box color={selectedBox.color}></Box>
+            <Box color={selectedBox.color} id={selectedBox.id}/>
             <pre className={classnames('desc')}>
-                    Current selected box is {selectedBox.color}
-                </pre>
+                Current selected box is {selectedBox.color}
+            </pre>
         </div>
     );
 };
