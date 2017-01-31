@@ -1,4 +1,4 @@
-# Intopalo Interview App Demo
+# React training app demo
 
 ### Install:
 `npm install`
