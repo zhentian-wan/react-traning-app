@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
+import {addBox} from './AppHelper';
 
 import Home from '../Home';
 import { Screentwo } from '../Screentwo';
@@ -53,12 +54,9 @@ class App extends Component {
             color : 'red'
         };
 
-        this.setState({
-                          boxes : [
-                              ...this.state.boxes,
-                              newBox
-                          ]
-                      });
+        const boxes = addBox(this.state.boxes, newBox);
+
+        this.setState({ boxes });
     };
 
     onRemoveBox = () => {

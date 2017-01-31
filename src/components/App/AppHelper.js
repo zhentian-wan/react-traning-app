@@ -1,0 +1,1 @@
+export const addBox = (boxes, newBox) => boxes.concat(newBox);
