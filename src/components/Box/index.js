@@ -13,9 +13,9 @@ const Box = ({color, onClick, id, highlight}) => (
 );
 
 Box.propTypes = {
-    onClick: React.PropTypes.func.isRequired,
+    onClick: React.PropTypes.func,
     color: React.PropTypes.string.isRequired,
-    highlight: React.PropTypes.bool.isRequired,
+    highlight: React.PropTypes.bool,
     id: React.PropTypes.number
 };
 

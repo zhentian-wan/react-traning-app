@@ -25,6 +25,11 @@ const ActionBtns = ({ selectedBox, onBtnClick }) => (
     </nav>
 );
 
+ActionBtns.propTypes = {
+    selectedBox: React.PropTypes.object.isRequired,
+    onBtnClick: React.PropTypes.func.isRequired
+};
+
 export const Screentwo = ( {selectedBox, onBtnClick } ) => {
 
     if( !selectedBox ) {
@@ -44,4 +49,9 @@ export const Screentwo = ( {selectedBox, onBtnClick } ) => {
             </pre>
         </div>
     );
+};
+
+Screentwo.propTypes = {
+    selectedBox: React.PropTypes.object,
+    onBtnClick: React.PropTypes.func
 };
