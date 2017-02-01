@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import {addBox} from './AppHelper';
+import {addBox, removeSelected, removeLast, updateSelectedBoxColor} from './AppHelper';
 
 import Home from '../Home';
 import { Screentwo } from '../Screentwo';
@@ -60,11 +60,14 @@ class App extends Component {
     };
 
     onRemoveBox = () => {
+        let boxes;
         if( !this.state.selectedBox ) {
-            this.setState({ boxes : this.removeLastBox(this.state.boxes) });
+            boxes = removeLast(this.state.boxes);
+            this.setState({ boxes });
         } else {
+            boxes = removeSelected(this.state.boxes, this.state.selectedBox);
             this.setState({
-                              boxes       : this.removeSelectedBox(this.state.selectedBox, this.state.boxes),
+                              boxes,
                               selectedBox : null
                           });
         }
@@ -72,7 +75,7 @@ class App extends Component {
 
     onBtnClick = (color, box, boxes) => {
         if( box ) {
-            this.setState({ boxes : this.updateSelectedBoxColor(color, box, this.state.boxes) });
+            this.setState({ boxes : updateSelectedBoxColor(color, box, this.state.boxes) });
         }
     };
 
@@ -81,33 +84,6 @@ class App extends Component {
     };
 
     /* Methods */
-    removeLastBox(boxes) {
-        if( boxes.length ) {
-            // Remove the last box
-            return boxes.slice(0, -1);
-        } else {
-            return boxes;
-        }
-    }
-
-    removeSelectedBox(selectedBox, boxes) {
-        if( selectedBox ) {
-            // Remove the selected box
-            return boxes.filter((box) => selectedBox.id !== box.id);
-        } else {
-            return boxes;
-        }
-    }
-
-    updateSelectedBoxColor(color, selectedBox, boxes) {
-        return boxes.map((box) => {
-            if( selectedBox.id === box.id ) {
-                box.color = color;
-            }
-            return box;
-        });
-    }
-
     render() {
         return (
             <Tabs
