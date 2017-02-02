@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import RaisedButton from 'material-ui/RaisedButton';
 import Box from '../Box';
+import {partial} from '../../lib/util';
 
 import './Screentwo.css';
 
@@ -12,25 +13,29 @@ const style = {
 /*
 * Stateless components
 * */
-const ActionBtns = ({ selectedBox, onBtnClick }) => (
-    <nav className={classnames('nav')}>
-        <RaisedButton
-            label="Red"
-            style={style}
-            onClick={() => onBtnClick('red', selectedBox)}/>
-        <RaisedButton
-            label="Green"
-            style={style}
-            onClick={() => onBtnClick('green', selectedBox)}/>
-    </nav>
-);
-
-ActionBtns.propTypes = {
-    selectedBox: React.PropTypes.object.isRequired,
-    onBtnClick: React.PropTypes.func.isRequired
+const ActionBtns = ({ selectedBox, onBtnClick }) => {
+    const setGreenColor = partial(onBtnClick, 'green', selectedBox);
+    const setRedColor = partial(onBtnClick, 'red', selectedBox);
+    return (
+        <nav className={classnames('nav')}>
+            <RaisedButton
+                label="Red"
+                style={style}
+                onClick={setRedColor}/>
+            <RaisedButton
+                label="Green"
+                style={style}
+                onClick={setGreenColor}/>
+        </nav>
+    );
 };
 
-export const Screentwo = ( {selectedBox, onBtnClick } ) => {
+ActionBtns.propTypes = {
+    selectedBox : React.PropTypes.object.isRequired,
+    onBtnClick  : React.PropTypes.func.isRequired
+};
+
+export const Screentwo = ({ selectedBox, onBtnClick }) => {
 
     if( !selectedBox ) {
         return (
@@ -52,6 +57,6 @@ export const Screentwo = ( {selectedBox, onBtnClick } ) => {
 };
 
 Screentwo.propTypes = {
-    selectedBox: React.PropTypes.object,
-    onBtnClick: React.PropTypes.func
+    selectedBox : React.PropTypes.object,
+    onBtnClick  : React.PropTypes.func
 };
