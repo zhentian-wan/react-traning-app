@@ -67,6 +67,7 @@ export default class Home extends Component {
                 <pre>
                     <Link to={'/allgreen'}>Green</Link>
                     <Link to={'/allred'}>Red</Link>
+                    <Link to={'/all'}>All</Link>
                 </pre>
             </div>
         );

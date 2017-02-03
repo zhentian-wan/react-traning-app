@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import { addBox, removeSelected, removeLast, findById, updateBoxes, setColor } from './AppHelper';
+import { addBox, removeSelected, removeLast, findById, updateBoxes, setColor, filterBoxes } from './AppHelper';
 
 import Home from '../Home';
 import { Screentwo } from '../Screentwo';
@@ -91,8 +91,14 @@ class App extends Component {
         this.setState({ value });
     };
 
+    static contextTypes = {
+        route: React.PropTypes.string
+    };
+
     /* Methods */
     render() {
+
+        const displayBoxes = filterBoxes(this.state.boxes, this.context.route);
         return (
             <Tabs
                 value={this.state.value}
@@ -100,7 +106,7 @@ class App extends Component {
             >
                 <Tab label="Home" value="home">
                     <Home
-                        boxes={this.state.boxes}
+                        boxes={displayBoxes}
                         onBoxSelected={this.onBoxSelected}
                         onAddBox={this.onAddBox}
                         onRemoveBox={this.onRemoveBox}

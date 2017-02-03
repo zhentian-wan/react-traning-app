@@ -1,5 +1,5 @@
 import {
-    addBox, removeLast, removeSelected, setColor, findById, updateBoxes
+    addBox, removeLast, removeSelected, setColor, findById, updateBoxes, filterBoxes
 } from '../components/App/AppHelper';
 
 const boxes = [
@@ -18,7 +18,7 @@ const newBox = {
     color : 'green'
 };
 
-test.skip('Should be able to add new box', () => {
+test('Should be able to add new box', () => {
     const expected = [
         {
             id    : 0,
@@ -38,14 +38,14 @@ test.skip('Should be able to add new box', () => {
     .toEqual(expected);
 });
 
-test.skip('addBox should be immutable', () => {
+test('addBox should be immutable', () => {
     const result = addBox(boxes, newBox);
     expect(result)
     .not
     .toBe(boxes);
 });
 
-test.skip('should remove last box', () => {
+test('should remove last box', () => {
     const result   = removeLast(boxes);
     const expected = [
         {
@@ -57,14 +57,14 @@ test.skip('should remove last box', () => {
     .toEqual(expected);
 });
 
-test.skip('removeLast should not mutate origin data', () => {
+test('removeLast should not mutate origin data', () => {
     const result = removeLast(boxes);
     expect(result)
     .not
     .toBe(boxes);
 });
 
-test.skip('should remove selected box', () => {
+test('should remove selected box', () => {
     const selected = {
         id    : 0,
         color : 'red'
@@ -80,7 +80,7 @@ test.skip('should remove selected box', () => {
     .toEqual(expected);
 });
 
-test.skip('removeSelected should not mutate origin data', () => {
+test('removeSelected should not mutate origin data', () => {
     const selected = {
         id    : 0,
         color : 'red'
@@ -89,27 +89,6 @@ test.skip('removeSelected should not mutate origin data', () => {
     expect(result)
     .not
     .toBe(boxes);
-});
-
-test.skip('should update selected box color', () => {
-    const selected = {
-        id    : 1,
-        color : 'red'
-    };
-    const color    = 'green';
-    const result   = updateSelectedBoxColor(color, selected, boxes);
-    const expected = [
-        {
-            id    : 0,
-            color : 'red'
-        },
-        {
-            id    : 1,
-            color : 'green'
-        }
-    ];
-    expect(result)
-    .toEqual(expected);
 });
 
 test('findById should return the right box', () => {
@@ -119,7 +98,7 @@ test('findById should return the right box', () => {
     .toEqual(id);
 });
 
-test.skip('setColor should change the selected box color', () => {
+test('setColor should change the selected box color', () => {
     const box           = {
         id    : 0,
         color : 'red'
@@ -159,4 +138,28 @@ test('updateBoxes should update boxes', () => {
         }
     ];
     expect(updated).toEqual(expected);
+});
+
+test('filterBoxes should filter boxes according to router state: /all', () => {
+    const state = '/all';
+    const result = filterBoxes(boxes, state);
+    expect(result).toEqual(boxes);
+});
+
+test('filterBoxes should filter boxes according to router state: /allgreen', () => {
+    const state = '/allgreen';
+    const result = filterBoxes(boxes, state);
+    expect(result).toEqual([]);
+});
+
+test('filterBoxes should filter boxes according to router state: /allred', () => {
+    const state = '/allred';
+    const result = filterBoxes(boxes, state);
+    expect(result).toEqual(boxes);
+});
+
+test('filterBoxes should not mutate the origin data', () => {
+   const state = '/allred';
+   const result = filterBoxes(boxes, state);
+   expect(result).not.toBe(boxes);
 });
