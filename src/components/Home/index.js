@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from '../../router';
 
 import Box from '../Box';
 
@@ -62,6 +63,10 @@ export default class Home extends Component {
                 <div className={classnames('boxes')}>{boxes}</div>
                 <pre className={classnames('desc')}>
                     There are {this.props.boxes && this.props.boxes.length} boxes.
+                </pre>
+                <pre>
+                    <Link to={'/allgreen'}>Green</Link>
+                    <Link to={'/allred'}>Red</Link>
                 </pre>
             </div>
         );

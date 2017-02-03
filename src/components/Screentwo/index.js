@@ -14,8 +14,8 @@ const style = {
 * Stateless components
 * */
 const ActionBtns = ({ selectedBox, onBtnClick }) => {
-    const setGreenColor = partial(onBtnClick, 'green', selectedBox);
-    const setRedColor = partial(onBtnClick, 'red', selectedBox);
+    const setGreenColor = partial(onBtnClick, 'green', selectedBox.id);
+    const setRedColor = partial(onBtnClick, 'red', selectedBox.id);
     return (
         <nav className={classnames('nav')}>
             <RaisedButton

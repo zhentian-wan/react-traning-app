@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router} from './router';
 
 // provider required by material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -11,6 +12,7 @@ import './index.css';
 
 injectTapEventPlugin();
 
-ReactDOM.render(<MuiThemeProvider>
-    <App />
+ReactDOM.render(
+    <MuiThemeProvider>
+        <Router><App /></Router>
 </MuiThemeProvider>, document.getElementById('root'));

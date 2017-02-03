@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import {addBox, removeSelected, removeLast, updateSelectedBoxColor} from './AppHelper';
+import { addBox, removeSelected, removeLast, findById, updateBoxes, setColor } from './AppHelper';
 
 import Home from '../Home';
 import { Screentwo } from '../Screentwo';
@@ -9,7 +9,7 @@ import { Summary } from '../Summary';
 class App extends Component {
 
     /* Public fields */
-    state         = {
+    state = {
         value       : 'home',
         boxes       : [
             {
@@ -73,10 +73,18 @@ class App extends Component {
         }
     };
 
-    onBtnClick = (color, box, boxes) => {
-        if( box ) {
-            this.setState({ boxes : updateSelectedBoxColor(color, box, this.state.boxes) });
-        }
+    onBtnClick = (color, id) => {
+        // find box by id
+        const box          = findById(id, this.state.boxes);
+        // toggle color
+        const updatedBox   = setColor(color, box);
+        // update boxes
+        const updatedBoxes = updateBoxes(updatedBox, this.state.boxes);
+        // set state
+        this.setState({
+                          boxes       : updatedBoxes,
+                          selectedBox : updatedBox
+                      });
     };
 
     handleChange = (value) => {
