@@ -1,0 +1,36 @@
+{
+  "boxes": [
+    {
+      "id": 0,
+      "color": "green"
+    },
+    {
+      "id": 1,
+      "color": "red"
+    },
+    {
+      "id": 2,
+      "color": "red"
+    },
+    {
+      "id": 3,
+      "color": "red"
+    },
+    {
+      "id": 4,
+      "color": "red"
+    },
+    {
+      "id": 5,
+      "color": "green"
+    },
+    {
+      "id": 6,
+      "color": "green"
+    },
+    {
+      "id": 7,
+      "color": "red"
+    }
+  ]
+}

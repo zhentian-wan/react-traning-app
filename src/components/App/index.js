@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { addBox, removeSelected, removeLast, findById, updateBoxes, setColor, filterBoxes } from './AppHelper';
-
+import { loadBoxes, createBox, saveBox, deleteBox } from '../../lib/boxes.service';
 import Home from '../Home';
 import { Screentwo } from '../Screentwo';
 import { Summary } from '../Summary';
@@ -11,37 +11,9 @@ class App extends Component {
     /* Public fields */
     state = {
         value       : 'home',
-        boxes       : [
-            {
-                id    : 0,
-                color : 'red'
-            },
-            {
-                id    : 1,
-                color : 'red'
-            },
-            {
-                id    : 2,
-                color : 'red'
-            },
-            {
-                id    : 3,
-                color : 'red'
-            },
-            {
-                id    : 4,
-                color : 'red'
-            },
-            {
-                id    : 5,
-                color : 'green'
-            },
-            {
-                id    : 6,
-                color : 'green'
-            }
-        ],
-        selectedBox : null
+        boxes       : [],
+        selectedBox : null,
+        message     : ''
     };
 
     onBoxSelected = (selectedBox) => {
@@ -57,20 +29,34 @@ class App extends Component {
         const boxes = addBox(this.state.boxes, newBox);
 
         this.setState({ boxes });
+
+        createBox(newBox)
+        .then(() => this.showTempMessage('Box added'));
+    };
+
+    showTempMessage = (message) => {
+        this.setState({ message });
+        setTimeout(() => {
+            this.setState({ message : '' });
+        }, 2000);
     };
 
     onRemoveBox = () => {
-        let boxes;
+        let boxes, id;
         if( !this.state.selectedBox ) {
+            id = this.state.boxes[this.state.boxes.length - 1].id;
             boxes = removeLast(this.state.boxes);
             this.setState({ boxes });
         } else {
+            id = this.state.selectedBox.id;
             boxes = removeSelected(this.state.boxes, this.state.selectedBox);
             this.setState({
                               boxes,
                               selectedBox : null
                           });
         }
+
+        deleteBox(id).then(() => this.showTempMessage('Box deleted'));
     };
 
     onBtnClick = (color, id) => {
@@ -85,6 +71,9 @@ class App extends Component {
                           boxes       : updatedBoxes,
                           selectedBox : updatedBox
                       });
+
+        saveBox(updatedBox)
+            .then(() => this.showTempMessage('Box updated'));
     };
 
     handleChange = (value) => {
@@ -92,7 +81,7 @@ class App extends Component {
     };
 
     static contextTypes = {
-        route: React.PropTypes.string
+        route : React.PropTypes.string
     };
 
     /* Methods */
@@ -100,11 +89,15 @@ class App extends Component {
 
         const displayBoxes = filterBoxes(this.state.boxes, this.context.route);
         return (
+
             <Tabs
                 value={this.state.value}
                 onChange={this.handleChange}
             >
                 <Tab label="Home" value="home">
+                    <div className="message">
+                        {this.state.message}
+                    </div>
                     <Home
                         boxes={displayBoxes}
                         onBoxSelected={this.onBoxSelected}
@@ -126,6 +119,11 @@ class App extends Component {
                 </Tab>
             </Tabs>
         );
+    }
+
+    componentDidMount() {
+        loadBoxes()
+        .then(boxes => this.setState({ boxes }));
     }
 }
 
