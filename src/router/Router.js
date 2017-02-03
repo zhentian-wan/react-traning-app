@@ -32,4 +32,10 @@ export class Router extends Component {
           <div>{this.props.children}</div>
         );
     }
+
+    componentDidMount() {
+        window.onpopstate = () => {
+            this.setState({route: getCurrentPath()})
+        }
+    }
 }
