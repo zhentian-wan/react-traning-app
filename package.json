@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "flow-bin": "^0.38.0",
     "json-server": "^0.9.4",
+    "nyc": "^10.1.2",
     "react-scripts": "0.8.5"
   },
   "dependencies": {
@@ -19,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "flow": "flow",
     "eject": "react-scripts eject",
     "server": "json-server -p 8080 --watch db.json"
   }
