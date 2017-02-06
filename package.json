@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "expect": "^1.20.2",
+    "expect-jsx": "^3.0.0",
     "flow-bin": "^0.38.0",
     "json-server": "^0.9.4",
     "nyc": "^10.1.2",
