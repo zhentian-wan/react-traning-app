@@ -21,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:watch": "npm t -- --watch",
     "flow": "flow",
     "eject": "react-scripts eject",
     "server": "json-server -p 8080 --watch db.json"

@@ -1,5 +1,11 @@
 import {
-    addBox, removeLast, removeSelected, setColor, findById, updateBoxes, filterBoxes
+    addBox,
+    removeLast,
+    removeSelected,
+    setColor,
+    findById,
+    updateBoxes,
+    filterBoxes
 } from '../components/App/AppHelper';
 
 describe('app tests', () => {
@@ -128,44 +134,51 @@ describe('app tests', () => {
     });
 
     test('updateBoxes should update boxes', () => {
-        const box     = {
+        const box      = {
             id    : 0,
             color : 'green'
         };
-        const updated = updateBoxes(box, boxes);
+        const updated  = updateBoxes(box, boxes);
         const expected = [
             {
-                id: 0,
-                color: 'green'
-            }, {
-                id: 1,
-                color: 'red'
+                id    : 0,
+                color : 'green'
+            },
+            {
+                id    : 1,
+                color : 'red'
             }
         ];
-        expect(updated).toEqual(expected);
+        expect(updated)
+        .toEqual(expected);
     });
 
     test('filterBoxes should filter boxes according to router state: /all', () => {
-        const state = '/all';
+        const state  = '/all';
         const result = filterBoxes(boxes, state);
-        expect(result).toEqual(boxes);
+        expect(result)
+        .toEqual(boxes);
     });
 
     test('filterBoxes should filter boxes according to router state: /allgreen', () => {
-        const state = '/allgreen';
+        const state  = '/allgreen';
         const result = filterBoxes(boxes, state);
-        expect(result).toEqual([]);
+        expect(result)
+        .toEqual([]);
     });
 
     test('filterBoxes should filter boxes according to router state: /allred', () => {
-        const state = '/allred';
+        const state  = '/allred';
         const result = filterBoxes(boxes, state);
-        expect(result).toEqual(boxes);
+        expect(result)
+        .toEqual(boxes);
     });
 
     test('filterBoxes should not mutate the origin data', () => {
-        const state = '/allred';
+        const state  = '/allred';
         const result = filterBoxes(boxes, state);
-        expect(result).not.toBe(boxes);
+        expect(result)
+        .not
+        .toBe(boxes);
     });
 });
