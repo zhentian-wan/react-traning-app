@@ -18,6 +18,7 @@ describe('box component', () => {
     });
 
     it('should rendering the string', () => {
+
        const renderer = TestUtils.createRenderer();
        renderer.render(<Box color="green" id="2" />);
        const result = renderer.getRenderOutput();
