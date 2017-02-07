@@ -1,0 +1,10 @@
+exports[`box component should rendering the string 1`] = `
+<div
+  className="Box green"
+  onClick={undefined}>
+  Box2 
+  green
+   - 
+  2
+</div>
+`;

@@ -1,12 +1,12 @@
 
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import expect from 'expect';
+import expectLib from 'expect';
 import expectJSX from 'expect-jsx';
 
 import Box from '../components/Box';
 
-expect.extend(expectJSX);
+Object.assign({}, expect, expectLib, expectJSX)
 
 describe('box component', () => {
 
@@ -18,11 +18,10 @@ describe('box component', () => {
     });
 
     it('should rendering the string', () => {
-
        const renderer = TestUtils.createRenderer();
        renderer.render(<Box color="green" id="2" />);
        const result = renderer.getRenderOutput();
-       expect(result).toIncludeJSX('Box green - 2');
+       expect(result).toMatchSnapshot()
     });
 
     describe('color rendering tests', () => {

@@ -8,7 +8,7 @@ const Box = ({color, onClick, id, highlight}) => (
       className={classnames('Box', color, {'highlight': highlight})}
       onClick={onClick}
   >
-      Box {color} - {id}
+      Box2 {color} - {id}
   </div>
 );
 
