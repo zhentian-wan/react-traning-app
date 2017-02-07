@@ -6,7 +6,7 @@ import expectJSX from 'expect-jsx';
 
 import Box from '../components/Box';
 
-Object.assign({}, expect, expectLib, expectJSX)
+Object.assign({}, expect, expectLib, expectJSX);
 
 describe('box component', () => {
 

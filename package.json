@@ -6,6 +6,7 @@
     "expect": "^1.20.2",
     "expect-jsx": "^3.0.0",
     "flow-bin": "^0.38.0",
+    "husky": "^0.13.1",
     "json-server": "^0.9.4",
     "nyc": "^10.1.2",
     "react-addons-test-utils": "^15.4.2",
@@ -24,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "precommit": "npm t",
     "test": "react-scripts test --env=jsdom --coverage",
     "test:watch": "npm t -- --watch",
     "flow": "flow",
