@@ -17,6 +17,13 @@ describe('box component', () => {
        expect(result).toEqual('div');
     });
 
+    it('should rendering the string', () => {
+       const renderer = TestUtils.createRenderer();
+       renderer.render(<Box color="green" id="2" />);
+       const result = renderer.getRenderOutput();
+       expect(result).toIncludeJSX('Box green - 2');
+    });
+
     describe('color rendering tests', () => {
         function renderingBoxThenCheckColor(color) {
             const renderer = TestUtils.createRenderer();
