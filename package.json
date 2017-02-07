@@ -25,7 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "precommit": "npm t",
+    "prepush": "npm t",
     "test": "react-scripts test --env=jsdom --coverage",
     "test:watch": "npm t -- --watch",
     "flow": "flow",
