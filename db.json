@@ -22,14 +22,22 @@
     },
     {
       "id": 5,
-      "color": "green"
+      "color": "red"
     },
     {
       "id": 6,
-      "color": "green"
+      "color": "red"
     },
     {
       "id": 7,
+      "color": "red"
+    },
+    {
+      "id": 8,
+      "color": "red"
+    },
+    {
+      "id": 9,
       "color": "red"
     }
   ]

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from '../../router';
+import Button from '../common/Button';
 
 import Box from '../Box';
 
@@ -23,6 +24,11 @@ const ActionBtns = ({onAddBox, onRemoveBox}) => (
             label="Remove"
             style={style}
             onClick={onRemoveBox}/>
+        <Button
+            element={'button'}
+            style={{borderRadius: '10px'}}
+            onClick={onRemoveBox}
+        >Remove</Button>
     </nav>
 );
 
