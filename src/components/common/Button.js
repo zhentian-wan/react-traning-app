@@ -13,8 +13,12 @@ const addStyle = style => mapProps(props => ({
 const style = {
     backgroundColor: 'black',
     color: 'white',
+    transform: 'rotate(-13deg)',
+    transition: 'all ease 0.43s',
     ':hover': {
-        backgroundColor: 'orange'
+        backgroundColor: 'orange',
+        color: 'lightGreen',
+        transform: 'rotate(0deg)'
     }
 };
 
