@@ -11,3 +11,8 @@ body {
 .message {
   color: green;
 }
+
+
+a.active {
+  color: red;
+}

@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 // import {Router} from './router';
 import {
     BrowserRouter as Router,
-    Route, Link
+    Route, NavLink
 } from 'react-router-dom';
 
 // provider required by material-ui
@@ -17,13 +17,23 @@ import App from './components/App';
 import About from './components/About';
 import Contact from './components/Contact';
 
+import './index.css';
+
 injectTapEventPlugin();
+
+const isLinkActive = (match, location) => {
+    return match
+};
 
 const Nav = () => (
   <nav>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link replace to={{pathname: '/contact'}}>Contact</Link>
+      <NavLink to="/" exact activeStyle={{color: 'pink'}}>Home</NavLink>
+      <NavLink to="/about" activeClassName="active">About</NavLink>
+      <NavLink replace
+               to={{pathname: '/contact'}}
+               isActive={isLinkActive}
+               activeClassName="active"
+      >Contact</NavLink>
   </nav>
 );
 
