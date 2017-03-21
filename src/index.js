@@ -34,6 +34,7 @@ const Nav = () => (
                isActive={isLinkActive}
                activeClassName="active"
       >Contact</NavLink>
+      <NavLink to="/demo-react" activeClassName={'active'}>Demo</NavLink>
   </nav>
 );
 
@@ -45,16 +46,17 @@ ReactDOM.render(
                 <Route exact path="/" component={App}></Route>
                 <Route exact path="/about" component={About}></Route>
                 <Route exact path="/contact" component={Contact}></Route>
-                {/*<Route
+                <Route
                     strict
                     path="/about/"
                     render={() => <h2>About render</h2>}></Route>
                 <Route
-                    path="/demo"
+                    path="/:page-:sub"
                     children={({match}) => {
-                        console.log("match:", match)
-                        return match && <h2>demo</h2>
-                    }}></Route>*/}
+                        const page = match.params.page;
+                        const sub = match.params.sub;
+                        return match && <h2>demo: {page} -- {sub}</h2>
+                    }}></Route>
             </div>
         </Router>
     </MuiThemeProvider>, document.getElementById('root'));
