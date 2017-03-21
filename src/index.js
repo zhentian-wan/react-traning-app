@@ -80,6 +80,7 @@ ReactDOM.render(
                             return match && <h2>demo: {date}{ext}</h2>
                         }}></Route>
                     <Route path="/menu" component={Menu}></Route>
+                    <Route path="/:item" render={({ match }) => (<h3>Item: {match.params.item}</h3>)}></Route>
                     <Route render={() => (<h1>Page not found</h1>)}></Route>
                 </Switch>
             </div>
