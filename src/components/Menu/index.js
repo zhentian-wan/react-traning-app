@@ -7,6 +7,7 @@ const Menu = () => (
         <Link to="/menu/food" >Food</Link>
         <Link to="/menu/drinks">Drinks</Link>
         <Link to="/menu/slides">Slides</Link>
+        <Link to="/menu/xxxxx">Slides</Link>
 
         <Route path="/menu/:section" render={({match}) => {
             return <h3>Section: {match.params.section}</h3>
