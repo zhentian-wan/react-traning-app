@@ -16,6 +16,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from './components/App';
 import About from './components/About';
 import Contact from './components/Contact';
+import Menu from './components/Menu';
 
 import './index.css';
 
@@ -37,6 +38,7 @@ const Nav = () => (
       <NavLink to="/demo-react" activeClassName={'active'}>Demo</NavLink>
       <NavLink to="/query?id=123">Demo123</NavLink>
       <NavLink to={{pathname: '/query', search: 'id=456'}}>Demo456</NavLink>
+      <NavLink to="/menu">Menu</NavLink>
   </nav>
 );
 
@@ -73,6 +75,7 @@ ReactDOM.render(
                         const ext = match.params.ext;
                         return match && <h2>demo: {date}{ext}</h2>
                     }}></Route>
+                <Route path="/menu" component={Menu}></Route>
 
             </div>
         </Router>
