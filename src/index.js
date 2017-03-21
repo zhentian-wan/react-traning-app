@@ -35,6 +35,8 @@ const Nav = () => (
                activeClassName="active"
       >Contact</NavLink>
       <NavLink to="/demo-react" activeClassName={'active'}>Demo</NavLink>
+      <NavLink to="/query?id=123">Demo123</NavLink>
+      <NavLink to={{pathname: '/query', search: 'id=456'}}>Demo456</NavLink>
   </nav>
 );
 
@@ -44,19 +46,34 @@ ReactDOM.render(
             <div>
                 <Nav></Nav>
                 <Route exact path="/" component={App}></Route>
-                <Route exact path="/about" component={About}></Route>
-                <Route exact path="/contact" component={Contact}></Route>
+                <Route path="/about" component={About}></Route>
+                <Route path="/contact" component={Contact}></Route>
                 <Route
                     strict
                     path="/about/"
                     render={() => <h2>About render</h2>}></Route>
+                <Route path="/query" render={({match, location}) => {
+                    return (
+                        <div>
+                            <pre>
+                               {JSON.stringify(match, null, 2)}
+                            </pre>
+                            <pre>
+                                {JSON.stringify(location, null, 2)}
+                            </pre>
+                            <h1>Search id: {new URLSearchParams(location.search).get('id')}</h1>
+                            <h2>new URLSearchParams(location.search).get('id')</h2>
+                        </div>
+                    )
+                }}></Route>
                 <Route
-                    path="/:page-:sub"
-                    children={({match}) => {
-                        const page = match.params.page;
-                        const sub = match.params.sub;
-                        return match && <h2>demo: {page} -- {sub}</h2>
+                    path="/:date(\d{2}-\d{2}-\d{4}):ext(.[a-z]+)"
+                    render={({match}) => {
+                        const date = match.params.date;
+                        const ext = match.params.ext;
+                        return match && <h2>demo: {date}{ext}</h2>
                     }}></Route>
+
             </div>
         </Router>
     </MuiThemeProvider>, document.getElementById('root'));
