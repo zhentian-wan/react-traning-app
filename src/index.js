@@ -17,6 +17,7 @@ import App from './components/App';
 import About from './components/About';
 import Contact from './components/Contact';
 import Menu from './components/Menu';
+import Guards from './components/Guards';
 
 import './index.css';
 
@@ -42,6 +43,7 @@ const Nav = () => (
             search: 'id=456'
         }}>Demo456</NavLink>
         <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/guards">Guards</NavLink>
     </nav>
 );
 
@@ -53,6 +55,7 @@ ReactDOM.render(
                 <Switch>
                     <Route exact path="/" component={App}></Route>
                     <Route path="/about" component={About}></Route>
+                    <Route path="/guards" component={Guards}></Route>
                     <Route path="/contact" component={Contact}></Route>
                     <Route
                         strict
