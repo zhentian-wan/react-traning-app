@@ -1,6 +1,7 @@
 
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+// After (15.5)
+import TestUtils from 'react-dom/test-utils';
 import expectLib from 'expect';
 import expectJSX from 'expect-jsx';
 

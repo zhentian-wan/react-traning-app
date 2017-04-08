@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { addBox, removeSelected, removeLast, findById, updateBoxes, setColor, filterBoxes } from './AppHelper';
 import { loadBoxes, createBox, saveBox, deleteBox } from '../../lib/boxes.service';
@@ -81,7 +82,7 @@ class App extends Component {
     };
 
     static contextTypes = {
-        route : React.PropTypes.string
+        route : PropTypes.string
     };
 
     /* Methods */

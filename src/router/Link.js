@@ -1,5 +1,6 @@
 
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
     padding: '8px'
@@ -8,8 +9,8 @@ const styles = {
 export class Link extends Component {
 
     static contextTypes = {
-        route: React.PropTypes.string,
-        linkHandler: React.PropTypes.func
+        route: PropTypes.string,
+        linkHandler: PropTypes.func
     };
 
     render() {
@@ -27,5 +28,5 @@ export class Link extends Component {
 
 
 Link.PropTypes = {
-    to: React.PropTypes.string.isRequired
+    to: PropTypes.string.isRequired
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 import './Summary.css';
 
@@ -19,7 +20,7 @@ const ColorDiv = ({ selectedBox }) => {
 };
 
 ColorDiv.propTypes = {
-    selectedBox: React.PropTypes.object
+    selectedBox: PropTypes.object
 };
 
 export const Summary = ({ selectedBox, total }) => (
@@ -31,8 +32,8 @@ export const Summary = ({ selectedBox, total }) => (
 );
 
 Summary.propTypes = {
-    selectedBox: React.PropTypes.object,
-    total: React.PropTypes.number
+    selectedBox: PropTypes.object,
+    total: PropTypes.number
 };
 
 

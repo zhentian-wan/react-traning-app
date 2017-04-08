@@ -18,15 +18,9 @@ exports[`test jsx 1`] = `
 `;
 
 exports[`test jsx: example2 1`] = `
-<div>
-  <h1>
-    Hello
-  </h1>
-   there 
-  <strong>
-    John!
-  </strong>
-</div>
+ReactShallowRenderer {
+  "_instance": null,
+}
 `;
 
 exports[`test objects 1`] = `
