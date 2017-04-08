@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import Box from '../Box';
 import {partial} from '../../lib/util';
@@ -31,8 +32,8 @@ const ActionBtns = ({ selectedBox, onBtnClick }) => {
 };
 
 ActionBtns.propTypes = {
-    selectedBox : React.PropTypes.object.isRequired,
-    onBtnClick  : React.PropTypes.func.isRequired
+    selectedBox : PropTypes.object.isRequired,
+    onBtnClick  : PropTypes.func.isRequired
 };
 
 export const Screentwo = ({ selectedBox, onBtnClick }) => {
@@ -57,6 +58,6 @@ export const Screentwo = ({ selectedBox, onBtnClick }) => {
 };
 
 Screentwo.propTypes = {
-    selectedBox : React.PropTypes.object,
-    onBtnClick  : React.PropTypes.func
+    selectedBox : PropTypes.object,
+    onBtnClick  : PropTypes.func
 };

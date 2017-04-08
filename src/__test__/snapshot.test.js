@@ -1,6 +1,6 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils';
-import renderer from 'react-test-renderer'
+import TestUtils from 'react-dom/test-utils';
+import { createRenderer as renderer }  from 'react-test-renderer/shallow';
 import {makeSomeRequestAndGetSomeResponse, getFilteredStuff, MyComponent} from '../snapshot';
 
 test('objects', async () => {
@@ -22,6 +22,6 @@ test('jsx', () => {
 });
 
 test('jsx: example2', () => {
-    const component = renderer.create(<MyComponent name="John" />)
+    const component = renderer(<MyComponent name="John" />); //shadow renderer
     expect(component).toMatchSnapshot()
 })

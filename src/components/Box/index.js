@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './Box.css';
@@ -13,10 +14,10 @@ const Box = ({color, onClick, id, highlight}) => (
 );
 
 Box.propTypes = {
-    onClick: React.PropTypes.func,
-    color: React.PropTypes.string.isRequired,
-    highlight: React.PropTypes.bool,
-    id: React.PropTypes.number
+    onClick: PropTypes.func,
+    color: PropTypes.string.isRequired,
+    highlight: PropTypes.bool,
+    id: PropTypes.number
 };
 
 export default Box;
