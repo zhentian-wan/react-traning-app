@@ -18,6 +18,7 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Menu from './components/Menu';
 import Guards from './components/Guards';
+import Counter from './components/Counter';
 
 import './index.css';
 
@@ -43,6 +44,7 @@ const Nav = () => (
             search: 'id=456'
         }}>Demo456</NavLink>
         <NavLink to="/menu">Menu</NavLink>
+        <NavLink to="/counter">Counter</NavLink>
         <NavLink to="/guards">Guards</NavLink>
     </nav>
 );
@@ -54,6 +56,7 @@ ReactDOM.render(
                 <Nav></Nav>
                 <Switch>
                     <Route exact path="/" component={App}></Route>
+                    <Route path="/counter" component={Counter}></Route>
                     <Route path="/about" component={About}></Route>
                     <Route path="/guards" component={Guards}></Route>
                     <Route path="/contact" component={Contact}></Route>
